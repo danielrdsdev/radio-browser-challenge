@@ -1,9 +1,6 @@
+import { StationsProvider } from "@/components/providers/favorite-stations";
 import "../styles/globals.css";
 
-import { Footer } from "@/components/footer";
-import { Header } from "@/components/header";
-import { Sidebar } from "@/components/sidebar";
-import { ThemeProvider } from "@/components/theme-provider";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
@@ -20,17 +17,9 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en" suppressHydrationWarning>
+		<html lang="en">
 			<body className={inter.className}>
-				<ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-					<Sidebar />
-
-					<div className="ml-80 min-h-full flex flex-col">
-						<Header />
-						<main className="py-16 px-12 flex-1">{children}</main>
-						<Footer />
-					</div>
-				</ThemeProvider>
+				<StationsProvider>{children}</StationsProvider>
 			</body>
 		</html>
 	);

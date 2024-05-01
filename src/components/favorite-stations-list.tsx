@@ -1,12 +1,26 @@
 "use client";
 
-import { PlayCircle, Trash } from "lucide-react";
+import { Edit2, PlayCircle, Trash } from "lucide-react";
 import { useContext } from "react";
 import { FavoriteStations } from "./providers/favorite-stations";
 import { Button } from "./ui/button";
+import {
+	Dialog,
+	DialogClose,
+	DialogContent,
+	DialogHeader,
+	DialogTrigger,
+} from "./ui/dialog";
+import { Input } from "./ui/input";
 
 export const FavoriteStationsList = () => {
-	const { stations, handleDeleteFavorite } = useContext(FavoriteStations);
+	const {
+		stations,
+		handleDeleteFavorite,
+		handleUpdateName,
+		newName,
+		setNewName,
+	} = useContext(FavoriteStations);
 
 	return (
 		<div className="space-y-6 border rounded-lg p-6">
@@ -31,13 +45,42 @@ export const FavoriteStationsList = () => {
 								</div>
 							</div>
 
-							<Button
-								onClick={() => handleDeleteFavorite(station.stationuuid)}
-								size="icon"
-								variant="destructive"
-							>
-								<Trash className="size-5" />
-							</Button>
+							<div className="flex items-center gap-4">
+								<Dialog>
+									<DialogTrigger asChild>
+										<Button size="icon" variant="outline">
+											<Edit2 className="size-5" />
+										</Button>
+									</DialogTrigger>
+									<DialogContent>
+										<DialogHeader>Update name</DialogHeader>
+										<form
+											onSubmit={(e) => {
+												e.preventDefault();
+												handleUpdateName(station.stationuuid, newName);
+											}}
+											className="w-full space-y-4"
+										>
+											<Input
+												placeholder="New name"
+												value={newName}
+												onChange={(e) => setNewName(e.target.value)}
+											/>
+
+											<DialogClose asChild>
+												<Button type="submit">Salvar</Button>
+											</DialogClose>
+										</form>
+									</DialogContent>
+								</Dialog>
+								<Button
+									onClick={() => handleDeleteFavorite(station.stationuuid)}
+									size="icon"
+									variant="destructive"
+								>
+									<Trash className="size-5" />
+								</Button>
+							</div>
 						</div>
 					))}
 				</>

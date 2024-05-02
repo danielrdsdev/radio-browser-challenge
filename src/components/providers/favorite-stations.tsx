@@ -44,9 +44,16 @@ export const StationsProvider = ({ children }: { children: ReactNode }) => {
 	};
 
 	const handleDeleteFavorite = (stationuuid: string) => {
-		setStations((prev) =>
-			prev.filter((station) => station.stationuuid !== stationuuid),
-		);
+		setStations((prev) => {
+			const station = prev.find(
+				(station) => station.stationuuid === stationuuid,
+			);
+			if (station?.playing) {
+				const audio = document.getElementById("audio") as HTMLAudioElement;
+				audio.pause();
+			}
+			return prev.filter((station) => station.stationuuid !== stationuuid);
+		});
 	};
 
 	const handleUpdateName = (stationuuid: string, newName: string) => {

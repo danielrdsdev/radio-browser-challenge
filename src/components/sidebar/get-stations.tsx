@@ -5,24 +5,15 @@ import { StationCard } from "./station-card";
 
 export const GetStations = async ({
 	query,
-	currentPage,
-	country,
-	language,
+	page,
 }: {
 	query: string;
-	currentPage: number;
-	country: string;
-	language: string;
+	page: number;
 }) => {
-	const data: Radio[] = await filteredData(
-		query,
-		currentPage,
-		country,
-		language,
-	);
+	const data: Radio[] = await filteredData(query, page);
 
 	return (
-		<ScrollArea className="px-4 h-[calc(100dvh-10rem)]">
+		<ScrollArea className="px-4 flex-1">
 			<div className="space-y-4">
 				{data.map((station) => (
 					<StationCard key={station.stationuuid} station={station} />

@@ -11,14 +11,10 @@ import {
 
 export const MobileNav = ({
 	query,
-	currentPage,
-	country,
-	language,
+	page,
 }: {
 	query: string;
-	currentPage: number;
-	country: string;
-	language: string;
+	page: number;
 }) => {
 	return (
 		<Sheet>
@@ -32,12 +28,7 @@ export const MobileNav = ({
 					<SheetTitle>Radio Browser</SheetTitle>
 				</SheetHeader>
 				<div className="mt-8 space-y-4">
-					<Sidebar
-						query={query}
-						currentPage={currentPage}
-						country={country}
-						language={language}
-					/>
+					<Sidebar query={query} page={page} />
 				</div>
 			</SheetContent>
 		</Sheet>

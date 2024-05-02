@@ -59,7 +59,7 @@ export const Pagination = ({ totalPages }: { totalPages: number }) => {
 				variant="outline"
 				disabled={page - 1 <= 0}
 			>
-				<ChevronFirst className="size-5" />
+				<ChevronFirst className="size-4" />
 			</Button>
 
 			<Button
@@ -68,7 +68,7 @@ export const Pagination = ({ totalPages }: { totalPages: number }) => {
 				variant="outline"
 				disabled={page - 1 <= 0}
 			>
-				<ChevronLeft className="size-5" />
+				<ChevronLeft className="size-4" />
 			</Button>
 
 			<Button
@@ -77,7 +77,7 @@ export const Pagination = ({ totalPages }: { totalPages: number }) => {
 				variant="outline"
 				disabled={page + 1 > totalPages}
 			>
-				<ChevronRight className="size-5" />
+				<ChevronRight className="size-4" />
 			</Button>
 
 			<Button
@@ -86,7 +86,7 @@ export const Pagination = ({ totalPages }: { totalPages: number }) => {
 				variant="outline"
 				disabled={page + 1 > totalPages}
 			>
-				<ChevronLast className="size-5" />
+				<ChevronLast className="size-4" />
 			</Button>
 		</div>
 	);

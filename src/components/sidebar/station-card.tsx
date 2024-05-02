@@ -24,11 +24,11 @@ export const StationCard = ({ station }: StationCardProps) => {
 			<div className="ml-auto">
 				{stations.some((s) => s.stationuuid === station.stationuuid) ? (
 					<Button size="icon" onClick={handleAddFavorite}>
-						<Heart className="size-5 fill-primary-foreground" />
+						<Heart className="size-4 fill-primary-foreground" />
 					</Button>
 				) : (
 					<Button size="icon" onClick={handleAddFavorite}>
-						<Heart className="size-5" />
+						<Heart className="size-4" />
 					</Button>
 				)}
 			</div>

@@ -52,7 +52,7 @@ export const FavoriteStationCard = ({ station }: FavoriteStationCardProps) => {
 					<Dialog>
 						<DialogTrigger asChild>
 							<Button size="icon" variant="outline">
-								<Edit2 className="size-5" />
+								<Edit2 className="size-4" />
 							</Button>
 						</DialogTrigger>
 						<DialogContent>
@@ -83,7 +83,7 @@ export const FavoriteStationCard = ({ station }: FavoriteStationCardProps) => {
 					size="icon"
 					variant="destructive"
 				>
-					<Trash className="size-5" />
+					<Trash className="size-4" />
 				</Button>
 			</div>
 		</div>

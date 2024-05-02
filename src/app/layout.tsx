@@ -19,7 +19,12 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className={inter.className}>
-				<StationsProvider>{children}</StationsProvider>
+				<StationsProvider>
+					<audio id="audio" className="sr-only">
+						<track kind="captions" src="captions.vtt" label="English" />
+					</audio>
+					{children}
+				</StationsProvider>
 			</body>
 		</html>
 	);

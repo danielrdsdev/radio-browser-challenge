@@ -10,6 +10,7 @@ type FavoriteStationsType = {
 	setFavoriteStations: (value: Radio) => void;
 	handleDeleteFavorite: (stationuuid: string) => void;
 	handleUpdateName: (stationuuid: string, newName: string) => void;
+	handlePlay: (stationuuid: string) => void;
 };
 
 export const FavoriteStations = createContext<FavoriteStationsType>({
@@ -19,25 +20,18 @@ export const FavoriteStations = createContext<FavoriteStationsType>({
 	setFavoriteStations: () => {},
 	handleDeleteFavorite: () => {},
 	handleUpdateName: () => {},
+	handlePlay: () => {},
 });
 
 export const StationsProvider = ({ children }: { children: ReactNode }) => {
-	const [stations, setStations] = useState<Radio[]>([]);
+	const [stations, setStations] = useState<Radio[]>(() => {
+		const savedStations = localStorage.getItem("favoriteStations");
+		return savedStations ? JSON.parse(savedStations) : [];
+	});
 	const [newName, setNewName] = useState("");
 
 	useEffect(() => {
-		setStations(
-			JSON.parse(
-				localStorage.getItem("@radio-browser/favorite-stations") || "[]",
-			),
-		);
-	}, []);
-
-	useEffect(() => {
-		localStorage.setItem(
-			"@radio-browser/favorite-stations",
-			JSON.stringify(stations),
-		);
+		localStorage.setItem("favoriteStations", JSON.stringify(stations));
 	}, [stations]);
 
 	const setFavoriteStations = (value: Radio) => {
@@ -65,6 +59,28 @@ export const StationsProvider = ({ children }: { children: ReactNode }) => {
 		setNewName("");
 	};
 
+	const handlePlay = (stationuuid: string) => {
+		setStations((prev) =>
+			prev.map((station) => {
+				if (station.stationuuid === stationuuid) {
+					const isPlaying = !station.playing;
+					const audio = document.getElementById("audio") as HTMLAudioElement;
+
+					if (isPlaying) {
+						audio.src = station.url_resolved;
+						audio.play();
+					} else {
+						audio.pause();
+					}
+
+					return { ...station, playing: isPlaying };
+				}
+
+				return { ...station, playing: false };
+			}),
+		);
+	};
+
 	return (
 		<FavoriteStations.Provider
 			value={{
@@ -74,6 +90,7 @@ export const StationsProvider = ({ children }: { children: ReactNode }) => {
 				setFavoriteStations,
 				handleDeleteFavorite,
 				handleUpdateName,
+				handlePlay,
 			}}
 		>
 			{children}

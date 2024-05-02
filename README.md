@@ -1,6 +1,8 @@
 
 # Radio Browser
 
+Projeto criado para o
+
 ## Tecnologias usadas
 
 - React;
@@ -14,6 +16,8 @@
 - Paginação com 10 itens por página, salvando a página atual na URL;
 - Favoritar uma estação;
 - Lista de estações favoritadas;
+- Estações favoritas salvas em localStorage;
+- Alterar o nome da estação favoritada;
 - Remover uma estação favoritada;
 - Skeleton loading;
 
@@ -21,3 +25,5 @@
 
 - Instale as dependências do projeto - npm install;
 - Start no servidor de desenvolvimento - npm run dev;
+
+>  This is a challenge by [Coodesh](https://coodesh.com/)

@@ -24,14 +24,15 @@ export const FavoriteStations = createContext<FavoriteStationsType>({
 });
 
 export const StationsProvider = ({ children }: { children: ReactNode }) => {
-	const [stations, setStations] = useState<Radio[]>(() => {
-		const savedStations = localStorage.getItem("favoriteStations");
-		return savedStations ? JSON.parse(savedStations) : [];
-	});
+	const [stations, setStations] = useState<Radio[]>([]);
 	const [newName, setNewName] = useState("");
 
 	useEffect(() => {
-		localStorage.setItem("favoriteStations", JSON.stringify(stations));
+		setStations(JSON.parse(localStorage.getItem("favorite-stations") || "[]"));
+	}, []);
+
+	useEffect(() => {
+		localStorage.setItem("favorite-stations", JSON.stringify(stations));
 	}, [stations]);
 
 	const setFavoriteStations = (value: Radio) => {

@@ -3,7 +3,7 @@
 
 O Radio Browser é um aplicativo de rádio online que permite aos usuários filtrar, favoritar e ouvir suas estações de rádio preferidas, além de manipular informações dessas estações.
 
-## 🔗 Projeto online [clique aqui]('https://radio-browser-challenge.vercel.app/')
+## 🔗 Projeto online - [Clique para ver](https://radio-browser-challenge.vercel.app/)
 
 ## 🚀 Tecnologias Utilizadas
 

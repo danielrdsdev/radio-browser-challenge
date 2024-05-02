@@ -14,7 +14,7 @@ export const Sidebar = ({
 	const totalPages = 10;
 
 	return (
-		<div className="border-r pt-14 px-2 flex flex-col gap-8 fixed left inset-y-0 w-80">
+		<div className="lg:border-r lg:pt-14 px-2 flex flex-col gap-8 lg:fixed lg:left lg:inset-y-0 lg:w-80 h-full">
 			<div className="px-4">
 				<Search placeholder="Search here" />
 			</div>

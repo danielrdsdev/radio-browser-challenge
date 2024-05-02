@@ -26,6 +26,8 @@ Este projeto foi desenvolvido com as seguintes tecnologias:
 
 - **Lista de estações favoritas**: Veja todas as suas estações favoritas em um só lugar.
 
+- **Filtro de estações favoritas**: Filtre suas estações favoritas.
+
 - **Persistência de dados**: As estações favoritas são salvas no localStorage do navegador, para que você não perca suas estações favoritas mesmo após fechar o navegador.
 
 - **Edição de nome da estação**: Personalize o nome de suas estações favoritas para torná-las ainda mais pessoais.

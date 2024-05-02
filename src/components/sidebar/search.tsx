@@ -28,7 +28,7 @@ export const Search = ({ placeholder }: SearchProps) => {
 
 	return (
 		<div className="relative flex items-center">
-			<SearchIcon className="absolute left-4" />
+			<SearchIcon className="absolute left-4 size-5" />
 			<Input
 				placeholder={placeholder}
 				onChange={(e) => {

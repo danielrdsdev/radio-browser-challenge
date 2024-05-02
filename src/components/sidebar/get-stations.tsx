@@ -6,8 +6,20 @@ import { StationCard } from "./station-card";
 export const GetStations = async ({
 	query,
 	currentPage,
-}: { query: string; currentPage: number }) => {
-	const data: Radio[] = await filteredData(query, currentPage);
+	country,
+	language,
+}: {
+	query: string;
+	currentPage: number;
+	country: string;
+	language: string;
+}) => {
+	const data: Radio[] = await filteredData(
+		query,
+		currentPage,
+		country,
+		language,
+	);
 
 	return (
 		<ScrollArea className="px-4 h-[calc(100dvh-10rem)]">
